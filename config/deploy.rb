@@ -1,15 +1,15 @@
 # config valid only for current version of Capistrano
-lock "3.14.1"
+lock "3.7.2"
 
-set :application, "mattapan-mapping-api"
-set :repo_url, "git@github.com:smithWEBtek/mattapan-mapping-api.git"
+set :application, "mattapan-audio-api"
+set :repo_url, "git@github.com:smithWEBtek/mattapan-audio-api.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 set :branch, 'main'
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/deploy/mattapan-mapping-api"
+set :deploy_to, "/home/deploy/mattapan-audio-api"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
