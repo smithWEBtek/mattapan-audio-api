@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock "3.7.2"
+lock "3.14.1"
 
 set :application, "mattapan-mapping-api"
 set :repo_url, "git@github.com:smithWEBtek/mattapan-mapping-api.git"
