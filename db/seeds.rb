@@ -2,6 +2,12 @@ def load_audio_files
   csv_text = File.read(Rails.root.join("lib", "audio_files.csv"))
   csv = CSV.parse(csv_text, :headers => true, :encoding => "ISO-8859-1")
   csv.each do |row|
+    geocode = nil
+
+    if row["lat"].split('')[0].to_i != 0
+      geocode = [row["lat"],row["lng"]].join
+    end
+
     audio_file = AudioFile.new(
       interviewee: row["interviewee"],
       url: row["url"],
@@ -13,7 +19,7 @@ def load_audio_files
       city: row["city"],
       state: row["state"],
       postal_code: row["postal_code"],
-      geocode: [row["lat"],row["lng"]].join,
+      geocode: geocode,
       address_string: row["address_string"]
     )
     audio_file.save
