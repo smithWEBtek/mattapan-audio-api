@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
-	
-	root 'api/voters#index'
-	
-	get '/api/markers', to: 'api/voters#markers'
-	
-	get '/api/stats', to: 'api/voters#stats'
-	
+	root 'api/audio_files#index'
+	get '/api/markers', to: 'api/audio_files#markers'
 	namespace :api do
-	  resources :voters
+	  resources :audio_files
 	end
 end

@@ -1,47 +1,35 @@
-def load_voters1
-	csv_text = File.read(Rails.root.join('lib', 'voters1.csv'))
-	csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-	csv.each do |row|
-		voter = Voter.new(
-			vote_preference: row["vote_preference"].downcase,
-			street_number: row["street_number"],
-			street_name: row["street_name"],
-			city: row["city"],
-			state: row["state"],
-			postal_code: row["postal_code"]
-			)
-			voter.save
-			print '*'
-		end
-	end
-	
-	def load_voters2
-		csv_text = File.read(Rails.root.join('lib', 'voters2.csv'))
-		csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
-		csv.each do |row|
-			voter = Voter.new(
-				vote_preference: row["vote_preference"].downcase,
-				street_number: row["street_number"],
-				street_name: row["street_name"],
-				city: row["city"],
-				state: row["state"],
-				postal_code: row["postal_code"]
-		)
-		voter.save
-		print '*'
-	end
+def load_audio_files
+  csv_text = File.read(Rails.root.join("lib", "audio_files.csv"))
+  csv = CSV.parse(csv_text, :headers => true, :encoding => "ISO-8859-1")
+  csv.each do |row|
+    audio_file = AudioFile.new(
+      interviewee: row["interviewee"],
+      url: row["url"],
+      title: row["title"],
+      location_description: row["location_description"],
+      file_description: row["file_description"],
+      street_number: row["street_number"],
+      street_name: row["street_name"],
+      city: row["city"],
+      state: row["state"],
+      postal_code: row["postal_code"],
+      geocode: [row["lat"],row["lng"]].join,
+      address_string: row["address_string"]
+    )
+    audio_file.save
+    print "*"
+  end
 end
- 
+
 def truncate_database
-	puts 'truncate_voters_table ------------------------------------'
-	Voter.all.each{|v| v.delete}
-	ActiveRecord::Base.connection.reset_pk_sequence!('voters')
+  puts "truncate_audio_files_table ------------------------------------"
+  AudioFile.all.each { |file| file.delete }
+  ActiveRecord::Base.connection.reset_pk_sequence!("audio_files")
 end
 
 def main
-	truncate_database
-	load_voters1
-	load_voters2
+  truncate_database
+  load_audio_files
 end
 
 main

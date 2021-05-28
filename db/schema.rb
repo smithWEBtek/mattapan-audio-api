@@ -15,8 +15,12 @@ ActiveRecord::Schema.define(version: 2019_01_19_234333) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "voters", force: :cascade do |t|
-    t.string "vote_preference"
+  create_table "audio_files", force: :cascade do |t|
+    t.string "interviewee"
+    t.string "url"
+    t.string "title"
+    t.string "location_description"
+    t.string "file_description"
     t.string "street_number"
     t.string "street_name"
     t.string "city"
