@@ -1,15 +1,16 @@
 class AudioFileSerializer < ActiveModel::Serializer
   attributes :id,
     :interviewee,
+    :headline,
+    :description,
     :url,
-    :title,
-    :location_description,
-    :file_description,
+    :location,
     :street_number,
     :street_name,
     :city,
     :state,
     :postal_code,
     :geocode,
-    :address_string
+    :address_string,
+    :approved
 end
