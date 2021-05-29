@@ -17,17 +17,20 @@ ActiveRecord::Schema.define(version: 2019_01_19_234333) do
 
   create_table "audio_files", force: :cascade do |t|
     t.string "interviewee"
+    t.string "headline"
+    t.string "description"
     t.string "url"
-    t.string "title"
-    t.string "location_description"
-    t.string "file_description"
+    t.string "location"
+    t.string "lat"
+    t.string "lng"
+    t.string "geocode"
     t.string "street_number"
     t.string "street_name"
     t.string "city"
     t.string "state"
     t.string "postal_code"
-    t.string "geocode"
     t.string "address_string"
+    t.boolean "approved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

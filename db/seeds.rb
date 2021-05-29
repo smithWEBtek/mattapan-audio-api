@@ -10,17 +10,18 @@ def load_audio_files
 
     audio_file = AudioFile.new(
       interviewee: row["interviewee"],
+      headline: row["headline"],
+      description: row["description"],
       url: row["url"],
-      title: row["title"],
-      location_description: row["location_description"],
-      file_description: row["file_description"],
+      location: row["location"],
       street_number: row["street_number"],
       street_name: row["street_name"],
       city: row["city"],
       state: row["state"],
       postal_code: row["postal_code"],
       geocode: geocode,
-      address_string: row["address_string"]
+      address_string: row["address_string"],
+      approved: row["approved"]
     )
     audio_file.save
     print "*"
